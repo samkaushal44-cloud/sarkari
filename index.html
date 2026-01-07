@@ -1,59 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sarkari Jobs - Latest Government Jobs</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sarkari Jobs</title>
   <style>
-    body { margin:0; font-family: Arial, sans-serif; background:#f4f6f9; }
-    header { background:#0b5ed7; color:#fff; padding:20px; text-align:center; }
-    .container { max-width:900px; margin:auto; padding:15px; }
-
-    .search {
-      width:100%;
-      padding:12px;
-      border-radius:6px;
-      border:1px solid #ccc;
-      margin-bottom:15px;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
     }
-
-    .job-card {
-      background:#fff;
-      border-radius:10px;
-      padding:15px;
-      margin-bottom:12px;
-      box-shadow:0 2px 6px rgba(0,0,0,0.1);
-    }
-    .job-title { font-size:18px; font-weight:bold; color:#0b5ed7; }
-    .job-meta { color:#666; font-size:14px; margin:6px 0; }
-
-    .btn {
-      display:inline-block;
-      margin-top:8px;
-      padding:8px 14px;
-      background:#0b5ed7;
-      color:#fff;
-      border-radius:6px;
-      text-decoration:none;
-      font-size:14px;
-    }
-
-    .ad-box {
-      margin: 15px 0;
+    header {
+      background: #0d6efd;
+      color: #fff;
+      padding: 15px;
       text-align: center;
-      background: #ffffff;
-      padding: 8px;
-      border-radius: 8px;
-      box-shadow:0 2px 6px rgba(0,0,0,0.1);
-      min-height: 60px;
     }
-
-    .footer {
-      text-align:center;
-      padding:15px;
-      font-size:13px;
-      color:#777;
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 10px;
+    }
+    .search-box {
+      margin: 10px 0;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .job-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    .job-card h3 {
+      margin: 0;
+      color: #0d6efd;
+      font-size: 18px;
+    }
+    .job-card p {
+      margin: 5px 0;
+      color: #555;
+      font-size: 14px;
+    }
+    .job-card a {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 6px 12px;
+      background: #0d6efd;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .job-card a:hover {
+      background: #084298;
+    }
+    .ad-box {
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 13px;
+      color: #555;
     }
   </style>
 </head>
@@ -66,132 +86,109 @@
 
 <div class="container">
 
-  <!-- 🔝 TOP BANNER AD (ONLY ONE) -->
+  <!-- 🔝 TOP BANNER AD -->
   <div class="ad-box">
-    <script>
-      atOptions = {
-        'key' : 'c6954fc507f5339f81300b996e608cda',
-        'format' : 'iframe',
-        'height' : 50,
-        'width' : 320,
-        'params' : {}
-      };
-    </script>
-    <script src="https://www.highperformanceformat.com/c6954fc507f5339f81300b996e608cda/invoke.js"></script>
+    <!-- Paste your banner script here -->
+    <script src="https://pl28420829.effectivegatecpm.com/e7/61/84/e76184711c23e0152ff74756fd7931bf.js"></script>
   </div>
 
-  <!-- 🔎 Search -->
-  <input type="text" id="search" class="search" placeholder="Search jobs...">
+  <!-- 🔍 SEARCH -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search jobs...">
+  </div>
 
-  <!-- 📋 Jobs -->
-  <div id="jobs">Loading jobs...</div>
+  <!-- 📄 JOB LIST -->
+  <div id="jobList"></div>
 
 </div>
 
-<div class="footer">
+<footer>
   © 2026 Sarkari Jobs | All Rights Reserved
-</div>
+</footer>
 
+<!-- ======================= -->
+<!-- 🔥 DIRECT LINK POP AD -->
+<!-- ======================= -->
 <script>
-/* ================= CONFIG ================= */
+(function(){
+  var popDone = false;
+  var popURL = "https://www.effectivegatecpm.com/eeg49z2vit?key=7f6552fcca809679f59bb1bfcbbe9268";
 
-// 🔴 API URL (अपना सही endpoint रखें)
-const API_URL = "https://sarkari-jobs-api-scby.onrender.com/api/jobs";
+  function triggerPop() {
+    if(popDone) return;
+    popDone = true;
+    window.open(popURL, "_blank");
+    document.removeEventListener("click", triggerPop);
+    document.removeEventListener("touchstart", triggerPop);
+  }
+
+  document.addEventListener("click", triggerPop);
+  document.addEventListener("touchstart", triggerPop);
+})();
+</script>
+
+<!-- ======================= -->
+<!-- 📡 JOBS FETCH SCRIPT -->
+<!-- ======================= -->
+<script>
+const API_URL = "https://sarkari-jobs-api-scby.onrender.com/jobs"; // your API
 
 let allJobs = [];
 
-/* ============ NATIVE AD (UNLIMITED) ============ */
-function loadNativeAd(container) {
-  const adDiv = document.createElement("div");
-  adDiv.id = "container-f083861ee465177d54a69b4a12fb6249";
-  container.appendChild(adDiv);
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.setAttribute("data-cfasync", "false");
-  script.src =
-    "https://pl28420432.effectivegatecpm.com/f083861ee465177d54a69b4a12fb6249/invoke.js";
-  container.appendChild(script);
-}
-
-/* ============ LOAD JOBS ============ */
-async function loadJobs() {
+async function fetchJobs() {
   try {
     const res = await fetch(API_URL);
     const data = await res.json();
     allJobs = data;
     renderJobs(allJobs);
   } catch (err) {
-    document.getElementById("jobs").innerHTML =
-      "❌ Failed to load jobs.";
+    document.getElementById("jobList").innerHTML = "<p style='color:red'>Server error. Try again later.</p>";
   }
 }
 
-/* ============ RENDER JOBS + ADS ============ */
 function renderJobs(jobs) {
-  const container = document.getElementById("jobs");
-  container.innerHTML = "";
+  const list = document.getElementById("jobList");
+  list.innerHTML = "";
 
   if (!jobs || jobs.length === 0) {
-    container.innerHTML = "No jobs found.";
+    list.innerHTML = "<p style='color:red'>No jobs found.</p>";
     return;
   }
 
   jobs.forEach((job, index) => {
-
-    const div = document.createElement("div");
-    div.className = "job-card";
-    div.innerHTML = `
-      <div class="job-title">${job.title}</div>
-      <div class="job-meta">${job.category || "Sarkari Job"} | ${job.date || ""}</div>
-      <a class="btn" href="${job.link}" target="_blank">View Details</a>
+    const card = document.createElement("div");
+    card.className = "job-card";
+    card.innerHTML = `
+      <h3>${job.title}</h3>
+      <p>${job.category || "Sarkari Job"} | ${job.date || ""}</p>
+      <a href="job.html?url=${encodeURIComponent(job.link)}&title=${encodeURIComponent(job.title)}" target="_self">
+        View Details
+      </a>
     `;
-    container.appendChild(div);
+    list.appendChild(card);
 
-    /* 🔁 EVERY 5 JOBS → NATIVE AD */
+    // 🔁 हर 5 jobs के बाद NATIVE AD
     if ((index + 1) % 5 === 0) {
-      const adBox = document.createElement("div");
-      adBox.className = "ad-box";
-      container.appendChild(adBox);
-      loadNativeAd(adBox);
+      const adDiv = document.createElement("div");
+      adDiv.className = "ad-box";
+      adDiv.innerHTML = `
+        <script async="async" data-cfasync="false" src="https://pl28420432.effectivegatecpm.com/f083861ee465177d54a69b4a12fb6249/invoke.js"></script>
+        <div id="container-f083861ee465177d54a69b4a12fb6249"></div>
+      `;
+      list.appendChild(adDiv);
     }
   });
 }
 
-/* ============ SEARCH ============ */
-document.getElementById("search").addEventListener("input", e => {
-  const q = e.target.value.toLowerCase();
-  const filtered = allJobs.filter(j =>
-    j.title.toLowerCase().includes(q)
-  );
+// 🔍 SEARCH FILTER
+document.getElementById("searchInput").addEventListener("input", function() {
+  const value = this.value.toLowerCase();
+  const filtered = allJobs.filter(job => job.title.toLowerCase().includes(value));
   renderJobs(filtered);
 });
 
-loadJobs();
-</script>
-
-<!-- 🔥 SAFE POPUNDER (ON FIRST CLICK ONLY) -->
-<script>
-(function () {
-  var popOpened = false;
-
-  function loadPopunder() {
-    if (popOpened) return;
-
-    var s = document.createElement("script");
-    s.src = "https://pl28420829.effectivegatecpm.com/e7/61/84/e76184711c23e0152ff74756fd7931bf.js";
-    s.async = true;
-    document.body.appendChild(s);
-
-    popOpened = true;
-
-    document.removeEventListener("click", loadPopunder);
-    document.removeEventListener("touchstart", loadPopunder);
-  }
-
-  document.addEventListener("click", loadPopunder);
-  document.addEventListener("touchstart", loadPopunder);
-})();
+// Load jobs
+fetchJobs();
 </script>
 
 </body>
