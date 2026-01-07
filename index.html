@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sarkari Jobs - Latest Government Jobs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body { margin:0; font-family: Arial, sans-serif; background:#f4f6f9; }
+    header { background:#0b5ed7; color:#fff; padding:20px; text-align:center; }
+    .container { max-width:900px; margin:auto; padding:15px; }
+
+    .search {
+      width:100%;
+      padding:12px;
+      border-radius:6px;
+      border:1px solid #ccc;
+      margin-bottom:15px;
+    }
+
+    .job-card {
+      background:#fff;
+      border-radius:10px;
+      padding:15px;
+      margin-bottom:12px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    }
+    .job-title { font-size:18px; font-weight:bold; color:#0b5ed7; }
+    .job-meta { color:#666; font-size:14px; margin:6px 0; }
+
+    .btn {
+      display:inline-block;
+      margin-top:8px;
+      padding:8px 14px;
+      background:#0b5ed7;
+      color:#fff;
+      border-radius:6px;
+      text-decoration:none;
+      font-size:14px;
+    }
+
+    .ad-box {
+      margin: 15px 0;
+      text-align: center;
+      background: #ffffff;
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+      min-height: 60px;
+    }
+
+    .footer {
+      text-align:center;
+      padding:15px;
+      font-size:13px;
+      color:#777;
+    }
+
+    /* 🔥 Sticky Bottom Ad */
+    .sticky-ad {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      border-top: 2px solid #0b5ed7;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
+      z-index: 9999;
+      text-align: center;
+      padding: 10px;
+    }
+    .sticky-ad a {
+      display: inline-block;
+      background: #0b5ed7;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 15px;
+    }
+    .sticky-ad span {
+      display: block;
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    /* Space for sticky ad */
+    .page-bottom-space {
+      height: 80px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Sarkari Jobs</h1>
+  <p>Latest Government Jobs, Results & Admit Cards</p>
+</header>
+
+<div class="container">
+
+  <!-- 🔝 TOP BANNER AD (ONLY ONE) -->
+  <div class="ad-box">
+    <script>
+      atOptions = {
+        'key' : 'c6954fc507f5339f81300b996e608cda',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highperformanceformat.com/c6954fc507f5339f81300b996e608cda/invoke.js"></script>
+  </div>
+
+  <!-- 🔎 Search -->
+  <input type="text" id="search" class="search" placeholder="Search jobs...">
+
+  <!-- 📋 Jobs -->
+  <div id="jobs">Loading jobs...</div>
+
+  <!-- Space so sticky ad doesn't cover content -->
+  <div class="page-bottom-space"></div>
+</div>
+
+<div class="footer">
+  © 2026 Sarkari Jobs | All Rights Reserved
+</div>
+
+<!-- 🔥 Sticky Bottom Direct Link Ad -->
+<div class="sticky-ad">
+  <a href="https://www.effectivegatecpm.com/eeg49z2vit?key=7f6552fcca809679f59bb1bfcbbe9268" target="_blank">
+    🔔 Open Today’s Best Government Jobs
+  </a>
+  <span>Advertisement</span>
+</div>
+
+<script>
+/* ================= CONFIG ================= */
+
+const API_URL = "https://sarkari-jobs-api-scby.onrender.com/api/jobs";
+
+const DIRECT_LINK =
+  "https://www.effectivegatecpm.com/eeg49z2vit?key=7f6552fcca809679f59bb1bfcbbe9268";
+
+let allJobs = [];
+
+/* ============ DIRECT LINK (ON CLICK) ============ */
+function openAdAndGo(id) {
+  window.open(DIRECT_LINK, "_blank");
+  setTimeout(() => {
+    window.location.href = "job.html?id=" + id;
+  }, 300);
+}
+
+/* ============ NATIVE AD (UNLIMITED) ============ */
+function loadNativeAd(container) {
+  const adDiv = document.createElement("div");
+  adDiv.id = "container-f083861ee465177d54a69b4a12fb6249";
+  container.appendChild(adDiv);
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.setAttribute("data-cfasync", "false");
+  script.src =
+    "https://pl28420432.effectivegatecpm.com/f083861ee465177d54a69b4a12fb6249/invoke.js";
+  container.appendChild(script);
+}
+
+/* ============ LOAD JOBS ============ */
+async function loadJobs() {
+  try {
+    const res = await fetch(API_URL);
+    const data = await res.json();
+    allJobs = data;
+    renderJobs(allJobs);
+  } catch (err) {
+    document.getElementById("jobs").innerHTML =
+      "❌ Failed to load jobs.";
+  }
+}
+
+/* ============ RENDER JOBS + ADS ============ */
+function renderJobs(jobs) {
+  const container = document.getElementById("jobs");
+  container.innerHTML = "";
+
+  if (!jobs || jobs.length === 0) {
+    container.innerHTML = "No jobs found.";
+    return;
+  }
+
+  jobs.forEach((job, index) => {
+
+    const div = document.createElement("div");
+    div.className = "job-card";
+    div.innerHTML = `
+      <div class="job-title">${job.title}</div>
+      <div class="job-meta">${job.category || "Sarkari Job"} | ${job.date || ""}</div>
+      <a class="btn" href="#" onclick="openAdAndGo(${job.id})">View Details</a>
+    `;
+    container.appendChild(div);
+
+    /* 🔁 EVERY 5 JOBS → NATIVE AD */
+    if ((index + 1) % 5 === 0) {
+      const adBox = document.createElement("div");
+      adBox.className = "ad-box";
+      container.appendChild(adBox);
+      loadNativeAd(adBox);
+    }
+  });
+}
+
+/* ============ SEARCH ============ */
+document.getElementById("search").addEventListener("input", e => {
+  const q = e.target.value.toLowerCase();
+  const filtered = allJobs.filter(j =>
+    j.title.toLowerCase().includes(q)
+  );
+  renderJobs(filtered);
+});
+
+loadJobs();
+</script>
+
+</body>
+</html>
