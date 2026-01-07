@@ -55,41 +55,6 @@
       font-size:13px;
       color:#777;
     }
-
-    /* 🔥 Sticky Bottom Ad */
-    .sticky-ad {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #ffffff;
-      border-top: 2px solid #0b5ed7;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.15);
-      z-index: 9999;
-      text-align: center;
-      padding: 10px;
-    }
-    .sticky-ad a {
-      display: inline-block;
-      background: #0b5ed7;
-      color: #fff;
-      padding: 10px 16px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 15px;
-    }
-    .sticky-ad span {
-      display: block;
-      font-size: 12px;
-      color: #666;
-      margin-top: 5px;
-    }
-
-    /* Space for sticky ad */
-    .page-bottom-space {
-      height: 80px;
-    }
   </style>
 </head>
 <body>
@@ -121,39 +86,19 @@
   <!-- 📋 Jobs -->
   <div id="jobs">Loading jobs...</div>
 
-  <!-- Space so sticky ad doesn't cover content -->
-  <div class="page-bottom-space"></div>
 </div>
 
 <div class="footer">
   © 2026 Sarkari Jobs | All Rights Reserved
 </div>
 
-<!-- 🔥 Sticky Bottom Direct Link Ad -->
-<div class="sticky-ad">
-  <a href="https://www.effectivegatecpm.com/eeg49z2vit?key=7f6552fcca809679f59bb1bfcbbe9268" target="_blank">
-    🔔 Open Today’s Best Government Jobs
-  </a>
-  <span>Advertisement</span>
-</div>
-
 <script>
 /* ================= CONFIG ================= */
 
+// 🔴 API URL (अपना सही endpoint रखें)
 const API_URL = "https://sarkari-jobs-api-scby.onrender.com/api/jobs";
 
-const DIRECT_LINK =
-  "https://www.effectivegatecpm.com/eeg49z2vit?key=7f6552fcca809679f59bb1bfcbbe9268";
-
 let allJobs = [];
-
-/* ============ DIRECT LINK (ON CLICK) ============ */
-function openAdAndGo(id) {
-  window.open(DIRECT_LINK, "_blank");
-  setTimeout(() => {
-    window.location.href = "job.html?id=" + id;
-  }, 300);
-}
 
 /* ============ NATIVE AD (UNLIMITED) ============ */
 function loadNativeAd(container) {
@@ -199,7 +144,7 @@ function renderJobs(jobs) {
     div.innerHTML = `
       <div class="job-title">${job.title}</div>
       <div class="job-meta">${job.category || "Sarkari Job"} | ${job.date || ""}</div>
-      <a class="btn" href="#" onclick="openAdAndGo(${job.id})">View Details</a>
+      <a class="btn" href="${job.link}" target="_blank">View Details</a>
     `;
     container.appendChild(div);
 
@@ -223,6 +168,30 @@ document.getElementById("search").addEventListener("input", e => {
 });
 
 loadJobs();
+</script>
+
+<!-- 🔥 SAFE POPUNDER (ON FIRST CLICK ONLY) -->
+<script>
+(function () {
+  var popOpened = false;
+
+  function loadPopunder() {
+    if (popOpened) return;
+
+    var s = document.createElement("script");
+    s.src = "https://pl28420829.effectivegatecpm.com/e7/61/84/e76184711c23e0152ff74756fd7931bf.js";
+    s.async = true;
+    document.body.appendChild(s);
+
+    popOpened = true;
+
+    document.removeEventListener("click", loadPopunder);
+    document.removeEventListener("touchstart", loadPopunder);
+  }
+
+  document.addEventListener("click", loadPopunder);
+  document.addEventListener("touchstart", loadPopunder);
+})();
 </script>
 
 </body>
